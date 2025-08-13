@@ -73,7 +73,7 @@ class DcmSwiftTests: XCTestCase {
      */
     override class var defaultTestSuite: XCTestSuite {
         let suite = XCTestSuite(forTestCaseClass: DcmSwiftTests.self)
-        let paths = Bundle.module.paths(forResourcesOfType: "dcm", inDirectory: nil)
+        let paths = Bundle.main.paths(forResourcesOfType: "dcm", inDirectory: nil)
                 
         if testDicomDateAndTime {
             suite.addTest(DcmSwiftTests(selector: #selector(readDicomDate)))
@@ -673,7 +673,7 @@ class DcmSwiftTests: XCTestCase {
     public func testIsValid() {
 
         // TODO get files under RT folder, doesn't work atm; workaround, use filter to get "rt_" files
-        var paths = Bundle.module.paths(forResourcesOfType: "dcm", inDirectory: nil)
+        var paths = Bundle.main.paths(forResourcesOfType: "dcm", inDirectory: nil)
         paths = paths.filter { $0.contains("rt_") }
         
         paths.forEach { path in
@@ -682,7 +682,7 @@ class DcmSwiftTests: XCTestCase {
             }
         }
         
-        let path = Bundle.module.path(forResource: "rt_dose_1.2.826.0.1.3680043.8.274.1.1.6549911257.77961.3133305374.424", ofType: "dcm")
+        let path = Bundle.main.path(forResource: "rt_dose_1.2.826.0.1.3680043.8.274.1.1.6549911257.77961.3133305374.424", ofType: "dcm")
         guard let p = path else {
             return
         }
@@ -691,7 +691,7 @@ class DcmSwiftTests: XCTestCase {
             XCTAssertTrue(Dose.isValid(dicomRT: dicomRT))
         }
         
-        let path2 = Bundle.module.path(forResource: "rt_RTXPLAN.20110509.1010_Irregular", ofType: "dcm")
+        let path2 = Bundle.main.path(forResource: "rt_RTXPLAN.20110509.1010_Irregular", ofType: "dcm")
         guard let p2 = path2 else {
             return
         }
@@ -703,7 +703,7 @@ class DcmSwiftTests: XCTestCase {
     
     public func testGetDoseImageWidth() {
         
-        let path = Bundle.module.path(forResource: "rt_dose_1.2.826.0.1.3680043.8.274.1.1.6549911257.77961.3133305374.424", ofType: "dcm")
+        let path = Bundle.main.path(forResource: "rt_dose_1.2.826.0.1.3680043.8.274.1.1.6549911257.77961.3133305374.424", ofType: "dcm")
         guard let p = path else {
             return
         }
@@ -714,7 +714,7 @@ class DcmSwiftTests: XCTestCase {
     }
     
     public func testGetDoseImageHeight() {
-        let path = Bundle.module.path(forResource: "rt_dose_1.2.826.0.1.3680043.8.274.1.1.6549911257.77961.3133305374.424", ofType: "dcm")
+        let path = Bundle.main.path(forResource: "rt_dose_1.2.826.0.1.3680043.8.274.1.1.6549911257.77961.3133305374.424", ofType: "dcm")
         guard let p = path else {
             return
         }
@@ -727,7 +727,7 @@ class DcmSwiftTests: XCTestCase {
     public func testToPNG() {
         // finderTestDir
         
-        var paths = Bundle.module.paths(forResourcesOfType: "dcm", inDirectory: nil)
+        var paths = Bundle.main.paths(forResourcesOfType: "dcm", inDirectory: nil)
         paths = paths.filter { $0.contains("rt_") }
         
         paths.forEach { path in
@@ -740,7 +740,7 @@ class DcmSwiftTests: XCTestCase {
         }
         
         /*
-        let path = Bundle.module.path(forResource: "rt_dose_1.2.826.0.1.3680043.8.274.1.1.6549911257.77961.3133305374.424", ofType: "dcm")
+        let path = Bundle.main.path(forResource: "rt_dose_1.2.826.0.1.3680043.8.274.1.1.6549911257.77961.3133305374.424", ofType: "dcm")
         if let p = path {
             
             if let dcmFile = DicomFile(forPath: p) {
@@ -753,7 +753,7 @@ class DcmSwiftTests: XCTestCase {
     }
     
     public func testGetUnscaledDose() {
-        let path = Bundle.module.path(forResource: "rt_dose_1.2.826.0.1.3680043.8.274.1.1.6549911257.77961.3133305374.424", ofType: "dcm")
+        let path = Bundle.main.path(forResource: "rt_dose_1.2.826.0.1.3680043.8.274.1.1.6549911257.77961.3133305374.424", ofType: "dcm")
         guard let p = path else {
             return
         }
@@ -778,7 +778,7 @@ class DcmSwiftTests: XCTestCase {
     }
     
     public func testGetDose() {
-        let path = Bundle.module.path(forResource: "rt_dose_1.2.826.0.1.3680043.8.274.1.1.6549911257.77961.3133305374.424", ofType: "dcm")
+        let path = Bundle.main.path(forResource: "rt_dose_1.2.826.0.1.3680043.8.274.1.1.6549911257.77961.3133305374.424", ofType: "dcm")
         guard let p = path else {
             return
         }
@@ -800,7 +800,7 @@ class DcmSwiftTests: XCTestCase {
     }
     
     public func testGetDoseImage() {
-        let path = Bundle.module.path(forResource: "rt_dose_1.2.826.0.1.3680043.8.274.1.1.6549911257.77961.3133305374.424", ofType: "dcm")
+        let path = Bundle.main.path(forResource: "rt_dose_1.2.826.0.1.3680043.8.274.1.1.6549911257.77961.3133305374.424", ofType: "dcm")
         guard let p = path else {
             return
         }
@@ -815,7 +815,7 @@ class DcmSwiftTests: XCTestCase {
     }
     
     public func testGetDoseImages() {
-        let path = Bundle.module.path(forResource: "rt_dose_1.2.826.0.1.3680043.8.274.1.1.6549911257.77961.3133305374.424", ofType: "dcm")
+        let path = Bundle.main.path(forResource: "rt_dose_1.2.826.0.1.3680043.8.274.1.1.6549911257.77961.3133305374.424", ofType: "dcm")
         guard let p = path else {
             return
         }
@@ -835,7 +835,7 @@ class DcmSwiftTests: XCTestCase {
     public func testGetToleranceTableItem() {
         // rt_RTXPLAN.20110509.1010_Irregular.dcm
         
-        let path = Bundle.module.path(forResource: "rt_RTXPLAN.20110509.1010_Irregular.dcm", ofType: "dcm")
+        let path = Bundle.main.path(forResource: "rt_RTXPLAN.20110509.1010_Irregular.dcm", ofType: "dcm")
         guard let p = path else {
             return
         }
@@ -855,7 +855,7 @@ class DcmSwiftTests: XCTestCase {
     public func testGetFractionGroupItem() {
         // rt_RTXPLAN.20110509.1010_Irregular.dcm
         
-        let path = Bundle.module.path(forResource: "rt_RTXPLAN.20110509.1010_Irregular.dcm", ofType: "dcm")
+        let path = Bundle.main.path(forResource: "rt_RTXPLAN.20110509.1010_Irregular.dcm", ofType: "dcm")
         guard let p = path else {
             return
         }
@@ -875,7 +875,7 @@ class DcmSwiftTests: XCTestCase {
     public func testGetBeamItem() {
         // rt_RTXPLAN.20110509.1010_Irregular.dcm
         
-        let path = Bundle.module.path(forResource: "rt_RTXPLAN.20110509.1010_Irregular.dcm", ofType: "dcm")
+        let path = Bundle.main.path(forResource: "rt_RTXPLAN.20110509.1010_Irregular.dcm", ofType: "dcm")
         guard let p = path else {
             return
         }
@@ -895,7 +895,7 @@ class DcmSwiftTests: XCTestCase {
     public func testGetPatientItem() {
         // rt_RTXPLAN.20110509.1010_Irregular.dcm
         
-        let path = Bundle.module.path(forResource: "rt_RTXPLAN.20110509.1010_Irregular.dcm", ofType: "dcm")
+        let path = Bundle.main.path(forResource: "rt_RTXPLAN.20110509.1010_Irregular.dcm", ofType: "dcm")
         guard let p = path else {
             return
         }
@@ -918,7 +918,7 @@ class DcmSwiftTests: XCTestCase {
     public func testGetFrameOfReference() {
         // rt_RTSTRUCT.2.16.840.1.113669.2.931128.509887832.20120106104805.776010
         
-        guard let path = Bundle.module.path(forResource: "rt_RTSTRUCT.2.16.840.1.113669.2.931128.509887832.20120106104805.776010.dcm", ofType: "dcm") else {
+        guard let path = Bundle.main.path(forResource: "rt_RTSTRUCT.2.16.840.1.113669.2.931128.509887832.20120106104805.776010.dcm", ofType: "dcm") else {
             return
         }
         
@@ -936,7 +936,7 @@ class DcmSwiftTests: XCTestCase {
     public func testGetObservation() {
         // rt_RTSTRUCT.2.16.840.1.113669.2.931128.509887832.20120106104805.776010
         
-        guard let path = Bundle.module.path(forResource: "rt_RTSTRUCT.2.16.840.1.113669.2.931128.509887832.20120106104805.776010.dcm", ofType: "dcm") else {
+        guard let path = Bundle.main.path(forResource: "rt_RTSTRUCT.2.16.840.1.113669.2.931128.509887832.20120106104805.776010.dcm", ofType: "dcm") else {
             return
         }
         
@@ -955,7 +955,7 @@ class DcmSwiftTests: XCTestCase {
     public func testGetObservationByROINumber() {
         // rt_RTSTRUCT.2.16.840.1.113669.2.931128.509887832.20120106104805.776010
         
-        guard let path = Bundle.module.path(forResource: "rt_RTSTRUCT.2.16.840.1.113669.2.931128.509887832.20120106104805.776010.dcm", ofType: "dcm") else {
+        guard let path = Bundle.main.path(forResource: "rt_RTSTRUCT.2.16.840.1.113669.2.931128.509887832.20120106104805.776010.dcm", ofType: "dcm") else {
             return
         }
         

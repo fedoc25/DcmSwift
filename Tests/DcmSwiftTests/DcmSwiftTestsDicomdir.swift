@@ -18,8 +18,8 @@ class DcmSwiftTestsDicomdir: XCTestCase {
     }
     
     func testIsDicomDir() {
-        let dicomDirPaths       = Bundle.module.paths(forResourcesOfType: "dicomdir", inDirectory: nil)
-        let notDicomDirPaths    = Bundle.module.paths(forResourcesOfType: "notdicomdir", inDirectory: nil)
+        let dicomDirPaths       = Bundle.main.paths(forResourcesOfType: "dicomdir", inDirectory: nil)
+        let notDicomDirPaths    = Bundle.main.paths(forResourcesOfType: "notdicomdir", inDirectory: nil)
         
         
         if let pathTrue = dicomDirPaths.first {
@@ -57,7 +57,7 @@ class DcmSwiftTestsDicomdir: XCTestCase {
     }
     
     func testWriteDicomDir() {
-        let _ = Bundle.module.paths(forResourcesOfType: "dicomdir", inDirectory: nil)
+        let _ = Bundle.main.paths(forResourcesOfType: "dicomdir", inDirectory: nil)
     }
     
 }
